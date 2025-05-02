@@ -69,3 +69,5 @@ The implementation relies on several key libraries:
 - scikit-learn for machine learning algorithms
 - surprise for collaborative filtering
 - tensorflow/keras for neural network development
+
+This project was completed as a Capstone as part of the IBM Machine Learning Professional Certificate.
