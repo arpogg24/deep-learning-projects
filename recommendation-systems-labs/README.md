@@ -1,4 +1,4 @@
-# Deep Learning Recommendation Systems
+# Machine Learning Recommendation Systems
 
 This repository contains a comprehensive series of Jupyter notebooks that demonstrate the implementation of various recommendation system techniques, from basic content-based approaches to advanced neural network methods.
 
