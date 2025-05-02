@@ -1,113 +1,71 @@
-# Course Recommendation System
+# Deep Learning Recommendation Systems
 
-## Overview
-This project implements a hybrid recommendation system for educational courses combining content-based filtering and collaborative filtering approaches. The system aims to provide personalized course recommendations to learners based on course content similarity and user behavior patterns.
+This repository contains a comprehensive series of Jupyter notebooks that demonstrate the implementation of various recommendation system techniques, from basic content-based approaches to advanced neural network methods.
 
-## Motivation
-Online learning platforms face the challenge of helping students discover relevant courses from thousands of options. Personalized recommendation systems help learners find courses that match their interests and learning goals, improving user satisfaction and learning outcomes.
+## Project Overview
 
-## Features
-- **Content-based filtering**: Recommends courses similar to those a user has shown interest in based on course descriptions and metadata
-- **Collaborative filtering**: Recommends courses based on the preferences of similar users
-- **Hybrid approach**: Combines both methods for improved recommendation quality
-- **NLP processing**: Extracts meaningful features from course descriptions using natural language processing
+The project explores recommendation systems within the context of an online learning platform, using course enrollment data to predict and suggest relevant courses to users. The implementation progresses from exploratory data analysis through increasingly sophisticated recommendation algorithms.
 
-## Technologies Used
-- Python 3.7+
-- TensorFlow 2.x
-- scikit-learn
-- Pandas
-- NumPy
-- NLTK / spaCy
-- Surprise library for collaborative filtering
+## Dataset
 
-## Methodology
+The analysis uses two primary datasets:
+- **Course metadata**: 307 unique courses with binary indicators for 14 different genres
+- **User enrollment data**: 233,306 ratings from 33,901 users
 
-### Data Preprocessing
-1. Text cleaning and normalization of course descriptions
-2. Tokenization, stemming, and lemmatization
-3. Stop word removal
-4. TF-IDF vectorization to convert text data into numerical features
+## Implementation Approaches
+
+The project demonstrates multiple recommendation system paradigms:
 
 ### Content-Based Filtering
-- Computed cosine similarity between course vectors to identify similar courses
-- Created content-based recommendations using similarity scores
+- **Text Analysis**: Converts course titles and descriptions into numeric feature vectors using Bag of Words techniques
+- **Similarity Metrics**: Implements cosine similarity, Euclidean distance, and Jaccard similarity for course comparison
+- **User Profiling**: Generates user interest profiles by combining course ratings with genre classifications
+- **Vector Operations**: Uses dot product operations between user profiles and course features to generate recommendations
 
 ### Collaborative Filtering
-- Implemented matrix factorization using Singular Value Decomposition (SVD)
-- Built user-item interaction matrix from historical enrollment/rating data
-- Generated recommendations based on predicted user ratings
+- **K-Nearest Neighbors**: Implements memory-based collaborative filtering using both user-based and item-based approaches
+- **Matrix Factorization**: Applies Non-negative Matrix Factorization to decompose the user-item matrix into latent factors
+- **Clustering**: Groups users with similar interests using K-means and leverages group patterns for recommendations
 
-### Hybrid Model
-- Combined predictions from both models using a weighted approach
-- Optimized weightings to maximize recommendation relevance
+### Deep Learning
+- **Neural Embeddings**: Implements a neural network architecture that learns compact representations of users and items
+- **Dot Product Network**: Creates a specialized network architecture that mimics matrix factorization through neural components
+- **Latent Feature Extraction**: Extracts learned embedding vectors for downstream recommendation tasks
 
-## Results
-- The hybrid recommendation model achieved 85% accuracy in predicting relevant courses
-- Content-based filtering performed better for new users (cold start problem)
-- Collaborative filtering excelled for users with established history
-- The hybrid approach improved recommendation quality by 38% compared to baseline methods
+## Technical Skills Demonstrated
 
-## Installation and Usage
-
-### Prerequisites
-```bash
-pip install -r requirements.txt
-```
-
-### Running the System
-```python
-# Import the recommendation system
-from recommendation_system import CourseRecommender
-
-# Initialize the system
-recommender = CourseRecommender()
-
-# Train the model
-recommender.train(course_data, user_data)
-
-# Get recommendations for a user
-recommendations = recommender.recommend(user_id, top_n=5)
-```
-
-## Future Improvements
-- Implement deep learning-based recommendation approaches
-- Add contextual features (time of day, device, etc.)
-- Incorporate explicit user feedback into the recommendation process
-- Develop A/B testing framework to evaluate recommendation performance
-- Include course difficulty as a factor in recommendations
+- **Data Science**: Exploratory data analysis, statistical analysis, data visualization
+- **Natural Language Processing**: Text preprocessing, tokenization, part-of-speech tagging, feature engineering
+- **Linear Algebra**: Vector operations, matrix manipulations, dimensionality reduction
+- **Machine Learning**: Unsupervised learning, clustering, similarity metrics, matrix factorization
+- **Deep Learning**: Neural network architecture design, embedding techniques, model training and evaluation
+- **Software Engineering**: Data transformation pipelines, algorithm implementation, performance evaluation
 
 ## Project Structure
-```
-recommendation-systems-labs/
-│
-├── data/                          # Data files
-│   ├── course_data.csv            # Course metadata and descriptions
-│   ├── user_data.csv              # User interactions and ratings
-│   └── processed/                 # Processed data files
-│
-├── notebooks/                     # Jupyter notebooks for exploration and visualization
-│   ├── data_exploration.ipynb     # Initial data analysis
-│   ├── content_based_model.ipynb  # Content-based filtering development
-│   ├── collaborative_model.ipynb  # Collaborative filtering development
-│   └── hybrid_model.ipynb         # Hybrid model integration and testing
-│
-├── src/                           # Source code
-│   ├── data_preprocessing.py      # Data cleaning and preparation
-│   ├── content_based.py           # Content-based filtering implementation
-│   ├── collaborative.py           # Collaborative filtering implementation
-│   ├── hybrid_model.py            # Hybrid model implementation
-│   └── utils.py                   # Utility functions
-│
-├── requirements.txt               # Project dependencies
-├── README.md                      # Project documentation
-└── main.py                        # Main entry point for the recommendation system
-```
 
-## License
-This project is licensed under the MIT License - see the LICENSE file for details.
+The implementation follows a logical progression through nine lab notebooks:
+1. **Exploratory Data Analysis**: Analyzes course popularity and user engagement patterns
+2. **Bag of Words**: Extracts features from course textual content
+3. **Similarity Calculation**: Implements methods to measure course similarity
+4. **Content-Based Recommendation (Genre)**: Builds a recommender using course genres
+5. **Content-Based Recommendation (Similarity)**: Creates recommendations based on course similarity
+6. **User Clustering**: Groups users with similar interests for community-based recommendations
+7. **Collaborative KNN**: Implements memory-based collaborative filtering
+8. **Collaborative NMF**: Implements model-based collaborative filtering with matrix factorization
+9. **Neural Network Approach**: Develops a deep learning model for rating prediction
 
-## Acknowledgments
-- This project was completed as a capstone for the IBM Machine Learning Professional Certification
-- Utilized anonymized course data provided as part of the certification program
-- Inspired by research papers on hybrid recommendation systems in educational contexts
+## Key Results
+
+- Content-based methods successfully identify courses with similar content profiles
+- User clustering effectively groups learners with similar interests into distinct learning communities
+- Matrix factorization techniques provide scalable solutions that address limitations of memory-based approaches
+- Neural networks simultaneously learn compact representations while predicting ratings, offering advantages in both computational efficiency and predictive accuracy
+
+## Dependencies
+
+The implementation relies on several key libraries:
+- pandas, numpy, matplotlib, seaborn for data manipulation and visualization
+- nltk, gensim for natural language processing
+- scikit-learn for machine learning algorithms
+- surprise for collaborative filtering
+- tensorflow/keras for neural network development
